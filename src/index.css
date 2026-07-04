@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap');
+@import 'tailwindcss';
+
+:root {
+  font-family: 'Poppins', sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color: #3B2418;
+  background-color: #F8F3EA;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: #F8F3EA;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: 'Cinzel', serif;
+}
+
+img {
+  display: block;
+}
+
+::selection {
+  background: #C89B3C;
+  color: #3B2418;
+}
