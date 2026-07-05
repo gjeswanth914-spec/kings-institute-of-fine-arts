@@ -176,8 +176,8 @@ export const faqs = [
 ]
 
 export const stats = [
-  { value: 500, suffix: '+', label: 'Students Trained' },
-  { value: 15, suffix: '+', label: 'Years of Experience' },
-  { value: 200, suffix: '+', label: 'Stage Performances' },
-  { value: 30, suffix: '+', label: 'Awards' },
+  { value: 40, suffix: '+', label: 'Students Trained' },
+  { value: 4, suffix: '+', label: 'Years of Experience' },
+  { value: 6, suffix: '+', label: 'Stage Performances' },
+  { value: 10, suffix: '+', label: 'Awards' },
 ]
