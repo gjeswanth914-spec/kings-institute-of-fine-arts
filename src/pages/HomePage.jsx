@@ -4,6 +4,8 @@ import { FaArrowLeft, FaArrowRight, FaCheck, FaPhoneAlt, FaWhatsapp } from 'reac
 import { MdEmail, MdLocationPin } from 'react-icons/md'
 import AnimatedCounter from '../components/AnimatedCounter'
 import Navbar from '../components/Navbar'
+import teacherImage from "../assets/ra.jpeg";
+import heroImage from "../assets/nataraja.png";
 import SectionHeading from '../components/SectionHeading'
 import { courses, faqs, galleryItems, highlights, navItems, reasons, stats, testimonials } from '../data/siteData'
 
@@ -76,9 +78,9 @@ const HomePage = () => {
               <div className="absolute -left-4 -top-4 h-24 w-24 rounded-full border border-[#C89B3C]/50" />
               <div className="absolute -bottom-6 -right-6 h-32 w-32 rounded-full bg-[#C89B3C]/20 blur-3xl" />
               <img
-                src="https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=1200&q=80"
-                alt="Bharatanatyam dancer in a graceful pose"
-                className="relative h-[540px] w-full rounded-[2rem] border border-white/20 object-cover shadow-[0_25px_80px_rgba(0,0,0,0.35)]"
+               src={heroImage}
+                alt="Lord Nataraja statue"
+                className="relative h-[650px] w-full rounded-[2rem] border border-white/20 object-cover object-center shadow-[0_25px_80px_rgba(0,0,0,0.35)]"
               />
               <div className="absolute bottom-6 left-6 rounded-[1.25rem] border border-[#C89B3C]/40 bg-[#F8F3EA]/90 px-5 py-4 shadow-[0_20px_45px_rgba(90,30,30,0.16)] backdrop-blur">
                 <p className="text-sm uppercase tracking-[0.3em] text-[#C89B3C]">Curated Learning</p>
@@ -92,7 +94,7 @@ const HomePage = () => {
           <SectionHeading eyebrow="About the Guru" title="Meet Your Guru" description="A professional journey shaped by dedication, discipline and a deep love for preserving Bharatanatyam." />
           <div className="grid items-center gap-12 rounded-[2rem] border border-[#C89B3C]/20 bg-white/70 p-8 shadow-[0_20px_60px_rgba(90,30,30,0.08)] lg:grid-cols-[0.9fr_1.1fr] lg:p-12">
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="overflow-hidden rounded-[1.75rem] border border-[#C89B3C]/30">
-              <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=900&q=80" alt="Guru Rakshithanjali BJ" className="h-[430px] w-full object-cover" />
+              <img src={teacherImage} alt="Guru Rakshithanjali BJ" className="h-[430px] w-full object-cover object-top" />
             </motion.div>
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
               <h3 className="font-['Cinzel'] text-3xl text-[#5A1E1E]">Rakshithanjali BJ</h3>
