@@ -1,8 +1,10 @@
+import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { FiMenu } from 'react-icons/fi'
 import { navItems } from '../data/siteData'
 
 const Navbar = () => {
+  const [isOpen, setIsOpen] = useState(false)
   return (
     <motion.header
       initial={{ y: -30, opacity: 0 }}
@@ -26,12 +28,42 @@ const Navbar = () => {
         >
           Enroll Now
         </a>
-        <button className="rounded-full border border-[#C89B3C]/40 p-2.5 text-[#5A1E1E] lg:hidden" aria-label="Open menu">
-          <FiMenu className="text-xl" />
-        </button>
-      </div>
+        <button
+  onClick={() => setIsOpen(!isOpen)}
+  className="rounded-full border border-[#C89B3C]/40 p-2.5 text-[#5A1E1E] lg:hidden"
+  aria-label="Open menu"
+>
+  <FiMenu className="text-xl" />
+</button>
+           </div>
+
+      {isOpen && (
+        <div className="lg:hidden border-t border-[#C89B3C]/20 bg-[#F8F3EA]">
+          <nav className="flex flex-col px-6 py-4">
+            {navItems.map((item) => (
+              <a
+                key={item.href}
+                href={item.href}
+                onClick={() => setIsOpen(false)}
+                className="py-3 text-[#3B2418] font-medium hover:text-[#C89B3C]"
+              >
+                {item.label}
+              </a>
+            ))}
+
+            <a
+              href="#contact"
+              onClick={() => setIsOpen(false)}
+              className="mt-4 rounded-full bg-[#C89B3C] px-5 py-3 text-center font-semibold text-[#3B2418]"
+            >
+              Enroll Now
+            </a>
+          </nav>
+        </div>
+      )}
+
     </motion.header>
   )
 }
 
-export default Navbar
+export default Navbar 
