@@ -14,7 +14,12 @@ import {
 } from 'react-icons/fa'
 import { GiTempleGate } from 'react-icons/gi'
 import { MdDashboardCustomize, MdOutlineFestival, MdOutlineLiveTv } from 'react-icons/md'
-
+import ga from "../assets/gallery/ga.jpeg";
+import ga2 from "../assets/gallery/ga2.jpeg";
+import ga3 from "../assets/gallery/ga3.jpeg";
+import ga4 from "../assets/gallery/ga4.jpeg";
+import ga5 from "../assets/gallery/ga5.jpeg";
+import ga6 from "../assets/gallery/ga6.jpeg";
 export const navItems = [
   { label: 'Home', href: '#home' },
   { label: 'About', href: '#about' },
@@ -91,13 +96,37 @@ export const highlights = [
 ]
 
 export const galleryItems = [
-  { src: 'https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=900&q=80', alt: 'Classroom practice', category: 'Classes' },
-  { src: 'https://images.unsplash.com/photo-1508700115892-45ecd05f7b1e?auto=format&fit=crop&w=900&q=80', alt: 'Performance rehearsal', category: 'Performances' },
-  { src: 'https://images.unsplash.com/photo-1519682337058-a94d519337bc?auto=format&fit=crop&w=900&q=80', alt: 'Cultural event celebration', category: 'Events' },
-  { src: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=900&q=80', alt: 'Student competition stage', category: 'Competitions' },
-  { src: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=900&q=80', alt: 'Graceful dance posture', category: 'Classes' },
-  { src: 'https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=900&q=80', alt: 'Festival showcase', category: 'Performances' },
-]
+  {
+    src: ga,
+    alt: "Bharatanatyam Class",
+    category: "Classes",
+  },
+  {
+    src: ga2,
+    alt: "Stage Performance",
+    category: "Performances",
+  },
+  {
+    src: ga3,
+    alt: "Cultural Event",
+    category: "Events",
+  },
+  {
+    src: ga4,
+    alt: "Competition Performance",
+    category: "Competitions",
+  },
+  {
+    src: ga5,
+    alt: "Students Practicing",
+    category: "Classes",
+  },
+  {
+    src: ga6,
+    alt: "Academy Performance",
+    category: "Performances",
+  },
+];
 
 export const testimonials = [
   {
