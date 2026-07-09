@@ -8,12 +8,22 @@ import teacherImage from "../assets/ra.jpeg";
 import heroImage from "../assets/nataraja.png";
 import SectionHeading from '../components/SectionHeading'
 import { courses, faqs, galleryItems, highlights, navItems, reasons, stats, testimonials } from '../data/siteData'
+import emailjs from '@emailjs/browser';
 
 const HomePage = () => {
   const [activeCategory, setActiveCategory] = useState('All')
   const [selectedImage, setSelectedImage] = useState(null)
   const [testimonialIndex, setTestimonialIndex] = useState(0)
   const [showBackToTop, setShowBackToTop] = useState(false)
+  const [formData, setFormData] = useState({
+  name: '',
+  age: '',
+  phone: '',
+  email: '',
+  course: 'Offline Weekend',
+  message: '',
+})
+const [successMessage, setSuccessMessage] = useState('')
 
   useEffect(() => {
     document.title = 'Kings Institute of Fine Arts'
@@ -32,6 +42,51 @@ const HomePage = () => {
     }, 5000)
     return () => window.clearInterval(timer)
   }, [])
+  const handleChange = (e) => {
+  setFormData({
+    ...formData,
+    [e.target.name]: e.target.value,
+  })
+}
+const handleSubmit = (e) => {
+  e.preventDefault()
+
+  emailjs
+    .send(
+      'service_fe3w2wu',
+      'template_slrdlph',
+      {
+        name: formData.name,
+        age: formData.age,
+        phone: formData.phone,
+        email: formData.email,
+        course: formData.course,
+        message: formData.message,
+      },
+      'XIbhDvk8fPmER2Lvj'
+    )
+    .then(() => {
+      setSuccessMessage(
+  '✅ Thank you for your enrollment! We have received your request successfully. We will reach you back soon.'
+)
+setTimeout(() => {
+  setSuccessMessage('')
+}, 5000)
+
+      setFormData({
+        name: '',
+        age: '',
+        phone: '',
+        email: '',
+        course: 'Offline Weekend',
+        message: '',
+      })
+    })
+    .catch((error) => {
+      console.error(error)
+      alert('Failed to send enrollment request. Please try again.')
+    })
+}
 
   const filteredGallery =
     activeCategory === 'All'
@@ -264,21 +319,76 @@ const HomePage = () => {
             </div>
             <div id="contact" className="rounded-[2rem] border border-[#C89B3C]/20 bg-gradient-to-br from-[#5A1E1E] to-[#3B2418] p-8 text-white shadow-[0_20px_60px_rgba(90,30,30,0.16)] lg:p-10">
               <SectionHeading eyebrow="Admission" title="Reserve Your Place" description="Begin your Bharatanatyam journey with a refined and welcoming first step." align="left" />
-              <form className="space-y-4">
+              <form className="space-y-4" onSubmit={handleSubmit}>
                 <div className="grid gap-4 md:grid-cols-2">
-                  <input className="rounded-[0.9rem] border border-white/15 bg-white/10 px-4 py-3 placeholder:text-white/60" placeholder="Name" />
-                  <input className="rounded-[0.9rem] border border-white/15 bg-white/10 px-4 py-3 placeholder:text-white/60" placeholder="Age" />
+                  <input
+                  type="text"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  className="rounded-[0.9rem] border border-white/15 bg-white/10 px-4 py-3 placeholder:text-white/60"
+                  placeholder="Name"
+                  required
+                />
+                  <input
+                    type="text"
+                    name="age"
+                    value={formData.age}
+                    onChange={handleChange}
+                    className="rounded-[0.9rem] border border-white/15 bg-white/10 px-4 py-3 placeholder:text-white/60"
+                    placeholder="Age"
+                    required
+                  />
                 </div>
                 <div className="grid gap-4 md:grid-cols-2">
-                  <input className="rounded-[0.9rem] border border-white/15 bg-white/10 px-4 py-3 placeholder:text-white/60" placeholder="Phone" />
-                  <input className="rounded-[0.9rem] border border-white/15 bg-white/10 px-4 py-3 placeholder:text-white/60" placeholder="Email" />
+                  <input
+                    type="text"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    className="rounded-[0.9rem] border border-white/15 bg-white/10 px-4 py-3 placeholder:text-white/60"
+                    placeholder="Phone"
+                     required
+                  />
+                  <input
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    className="rounded-[0.9rem] border border-white/15 bg-white/10 px-4 py-3 placeholder:text-white/60"
+                    placeholder="Email"
+                    required
+                  />
                 </div>
-                <select className="w-full rounded-[0.9rem] border border-white/15 bg-white/10 px-4 py-3 text-white">
+                <select
+                  name="course"
+                  value={formData.course}
+                  onChange={handleChange}
+                  className="w-full rounded-[0.9rem] border border-white/15 bg-white/10 px-4 py-3 text-white"
+>
                   <option className="text-[#3B2418]">Offline Weekend</option>
                   <option className="text-[#3B2418]">Online Anytime</option>
                 </select>
-                <textarea rows="4" className="w-full rounded-[0.9rem] border border-white/15 bg-white/10 px-4 py-3 placeholder:text-white/60" placeholder="Message" />
-                <button className="rounded-full bg-[#C89B3C] px-6 py-3 font-semibold text-[#3B2418] transition hover:-translate-y-0.5 hover:bg-[#d8af4f]">Enroll Now</button>
+                <textarea
+                rows="4"
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
+                className="w-full rounded-[0.9rem] border border-white/15 bg-white/10 px-4 py-3 placeholder:text-white/60"
+                placeholder="Message"
+                required
+                />
+                {successMessage && (
+                <div className="rounded-lg bg-green-100 border border-green-500 p-4 text-green-700 font-medium">
+                {successMessage}
+                </div>
+               )}
+                <button
+                type="submit"
+                className="rounded-full bg-[#C89B3C] px-6 py-3 font-semibold text-[#3B2418] transition hover:-translate-y-0.5 hover:bg-[#d8af4f]"
+>
+  Enroll Now
+</button>
               </form>
             </div>
           </div>
